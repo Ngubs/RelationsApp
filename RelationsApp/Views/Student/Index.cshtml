@@ -1,0 +1,36 @@
+﻿@model List<Student>
+<h3>List of Students</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Surname</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Address</th>
+		</tr>
+		
+	</thead>
+	<tbody>
+		@foreach(Student student in Model){
+			<tr>
+				<td>@student.Name</td>
+				<td>@student.Surname</td>
+				<td>@student.Email</td>
+				<td>@student.Phone</td>
+				<td>
+					@*
+						Since we have encapsulated an Address object to each Student object
+				        contained in the List of Students, using the .Include() function in 
+						the StudentController class, now we will have access to the Address object
+						that relates to student objects
+					*@
+					<p>@student.Address.UnitNumber</p>
+					<p>@student.Address.Street</p>
+					<p>@student.Address.Zip</p>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
